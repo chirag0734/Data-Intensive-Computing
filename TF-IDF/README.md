@@ -25,7 +25,7 @@ TFIDFMapper:
 Input – ((<word>:<document>:<total_words_in_document>), <word_count>)
 	Output – ((<word>:<document>:<word_count>  /  <total_words_in_document>))
 TFIDFReducer:
-	Output – (<word>  <document>	<TFIDF>)
+	Output – (<word> <document>/t<TFIDF>)
 
 This job generated the result file “tf-idf” containing the word, the document and its associated tfidf. 
 Also, we only print words and its data that are there in “vocab.txt” as per requirement.
@@ -36,6 +36,6 @@ TFIDF = tf * idf
 How to run?
 1. Place the input directory on hdfs.
 2. Place vocab.txt on hdfs root directory.
-3. hadoop <jarName>.jar  /<inputDirectoryPath>  /<outputDirectoryPath>
+3. hadoop "<jarName>.jar" "/<inputDirectoryPath>"  "/<outputDirectoryPath>"
 
 
