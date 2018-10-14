@@ -9,7 +9,9 @@ The task is simplified into two jobs, the output file from first job(Word Count 
 
 Approach:
 Our approach to the solution is as follows:
-JOB 1: Word Count Job
+
+#JOB 1: Word Count Job
+
 This job takes list of files/documents from given input directory as input and process them. Following are the Map and Reduce method input-output formats for the job:
 
 WordCountMapper:
@@ -21,7 +23,7 @@ WordCountReducer:
 
 This job generates a file called “wordCount” in output directory specified and it is used in next job i.e., TFIDF job.
 
-JOB 2: TFIDF Job
+#JOB 2: TFIDF Job
 This job takes file generated in previous job and process it. 
 
 TFIDFMapper:
