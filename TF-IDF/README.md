@@ -13,19 +13,19 @@ JOB 1: Word Count Job
 This job takes list of files/documents from given input directory as input and process them. Following are the Map and Reduce method input-output formats for the job:
 WordCountMapper: 
 Input – (document, contents)
-	Output – ((<word>:<document>:<total_words_in_document>), 1)
+	Output – (({word}:{document}:{total_words_in_document}), 1)
 WordCountReducer:
-	Output – ((<word>:<document>:<total_words_in_document>), <word_count>)
+	Output – (({word}:{document}:{total_words_in_document}), {word_count})
 
 This job generates a file called “wordCount” in output directory specified and it is used in next job i.e., TFIDF job.
 
 JOB 2: TFIDF Job
 This job takes file generated in previous job and process it. 
 TFIDFMapper:
-Input – ((<word>:<document>:<total_words_in_document>), <word_count>)
-	Output – ((<word>:<document>:<word_count>  /  <total_words_in_document>))
+Input – (({word}:{document}:{total_words_in_document}), {word_count})
+	Output – (({word}:{document}:{word_count}  /  {total_words_in_document}))
 TFIDFReducer:
-	Output – (<word> <document>/t<TFIDF>)
+	Output – ({word} {document}	{TFIDF})
 
 This job generated the result file “tf-idf” containing the word, the document and its associated tfidf. 
 Also, we only print words and its data that are there in “vocab.txt” as per requirement.
@@ -36,6 +36,6 @@ TFIDF = tf * idf
 How to run?
 1. Place the input directory on hdfs.
 2. Place vocab.txt on hdfs root directory.
-3. hadoop "<jarName>.jar" "/<inputDirectoryPath>"  "/<outputDirectoryPath>"
+3. hadoop {jarName}.jar /{inputDirectoryPath}  /{outputDirectoryPath}
 
 
