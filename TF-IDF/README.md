@@ -10,11 +10,12 @@ The task is simplified into two jobs, the output file from first job(Word Count 
 Approach:
 Our approach to the solution is as follows:
 JOB 1: Word Count Job
-This job takes list of files/documents from given input directory as input and process them. Following are the Map and Reduce method input-output formats for the job:/n
+This job takes list of files/documents from given input directory as input and process them. Following are the Map and Reduce method input-output formats for the job:
 
-WordCountMapper:/n 
-Input – (document, contents) /n
+WordCountMapper:
+	Input – (document, contents)
 	Output – (({word}:{document}:{total_words_in_document}), 1)
+
 WordCountReducer:
 	Output – (({word}:{document}:{total_words_in_document}), {word_count})
 
@@ -22,9 +23,11 @@ This job generates a file called “wordCount” in output directory specified a
 
 JOB 2: TFIDF Job
 This job takes file generated in previous job and process it. 
+
 TFIDFMapper:
-Input – (({word}:{document}:{total_words_in_document}), {word_count})
+	Input – (({word}:{document}:{total_words_in_document}), {word_count})
 	Output – (({word}:{document}:{word_count}  /  {total_words_in_document}))
+
 TFIDFReducer:
 	Output – ({word} {document}	{TFIDF})
 
